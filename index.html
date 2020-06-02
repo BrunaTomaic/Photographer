@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Webdoc about Greg McQueen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <header>
+
+        <img src="images/logo.webp" alt="logo" id="logo">
+
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#intro"><span>Home</span></a></li>
+            <li><a href="#whatIsDwp"><span>Documentary wedding photography</span></a></li>
+            <li><a href="#capturing"><span>Capturing the moment</span></a></li>
+            <li><a href="#iAm"><span>I am</span></a></li>
+            <li><a href="#stories"><span>Hear their stories</span></a></li>
+            <li><a href="#footer"><span>Find me</span></a></li>
+        </ul>
+    </nav>
+    <div class="coverWhite"></div>
+    <!-- add a menu -->
+    <div id="wrapper">
+
+
+        <main>
+            <article id="intro">
+                <section id="intro_video">
+                        <video autoplay loop muted id="introVideo">
+
+                          <source id="introVideoSource" src="images/phone.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                <div>
+                  <h1 class="onvideo" onclick="togglePausePlay()">
+                    Hi!
+                    <img src="images/icons/sound.svg" style="height:.6em;position:absolute;float:right;margin-left:10px;margin-top:10px"  onmouseover="Pause()" onmouseout="Play()" alt="sound">
+                    <br>
+                    I'm Greg
+                  </h1>
+                  <p class="onvideo">I'm a documentary wedding photographer based in Aarhus. </p>
+                </div>
+                </section>
+              </article>
+                <article id="dwp">
+                <section id="whatIsDwp">
+                    <h2>Documentary wedding photography</h2>
+                    <div class="images">
+                      <img src="images/couple_colour.jpg"
+                     alt="couple color">
+                    </div>
+                    <p>Documentary style wedding photography captures very genuine moments occurring throughout a wedding day. It is all about telling a story in the picture. The couple doesn’t need to smile or pose for the photos instead pictures are being taken of  these beautiful moments during the whole day.
+</p>
+                </section>
+            </article>
+
+            <article id="capturing">
+                <h2>Capturing a moment</h2>
+                <video controls class="capturing">
+              <source src="images/capturing-desktop.mp4" type="video/mp4" ><!--phone intro video-->
+              Your browser does not support the video tag.</video>
+                <p>Every photo taken has a story behind it. When looking at the photos 10 years later, the memory of these moments are still very vivid, because of the emotion, humor and reality expressed in the photos. </p>
+            </article>
+
+            <article id="iAm">
+                <h2>I am...</h2>
+                <div>
+                    <div class="images emotional">
+                        <span>
+                        <picture>
+                          <source media="(min-width: 650px)" srcset="images/emotional.jpg">
+                          <source srcset="images/emotional_small.jpg">
+                          <img src="images/emotional.jpg" alt="emotional" style="width:auto;">
+                        </picture>
+                      </span>
+                      </div>
+                    <div class="images realistic">
+                        <span>
+                        <picture>
+                          <source media="(min-width: 650px)" srcset="images/realistic.jpg">
+                          <source srcset="images/realistic_small.jpg">
+                          <img src="images/realistic.jpg" alt="realistic" style="width:auto;">
+                        </picture>
+                      </span>
+                    </div>
+                    <div class="images personal">
+                        <span>
+                        <picture>
+                          <source media="(min-width: 650px)" srcset="images/personal.jpg">
+                          <source srcset="images/personal_small.jpg">
+                          <img src="images/personal.jpg" alt="personal" style="width:auto;">
+                        </picture>
+                      </span>                        </div>
+                </div>
+            </article>
+            <article id="stories">
+                <h2>Hear their stories</h2>
+                <div class="images imgGreen">
+                <picture class="picWithSound bye-boys">
+                  <source media="(min-width: 650px)" srcset="images/byeboys.jpg">
+                  <source srcset="images/byeboys_small.jpg">
+                  <img src="images/byeboys.jpg" alt="byeboys">
+                </picture>
+                <audio id="byeBoys">
+                    <source src="sound/bye-boys.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio>
+                <picture class="picWithSound peeing-boys">
+                  <source media="(min-width: 650px)" srcset="images/peeingboys.jpg">
+                  <source srcset="images/peeingboys_small.jpg">
+                  <img src="images/peeingboys.jpg" alt="peeingboys">
+                </picture>
+                <audio id="peeingBoys">
+                    <source src="sound/peeing-guys.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio>
+              </div>
+            </article>
+
+        </main>
+
+        <footer id="footer">
+            <h2>Find me</h2>
+            <a href="http://www.gmcphotographer.com/" class="button">Visit my website!</a><!-- ARE WE ADDING EMAIL PHONE?<br><br>email<br>phone-->
+            <video autoplay loop muted>
+          <source src="images/Greg-popup.mp4" type="video/mp4" ><!--phone intro video-->
+      Your browser does not support the video tag.</video>
+        </footer>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+
+    /* responsive intro video */
+
+const tabletBreakpoint = 576;
+const desktopBreakpoint = 720;
+
+const tabletVideoURL = 'images/tablet.mp4';
+const desktopVideoURL = 'images/desktop.mp4';
+
+const windowWidth = window.innerWidth;
+const videoElements = Array.from(document.querySelectorAll('#introVideo'));
+
+videoElements.forEach(video => {
+
+  const videoSource = video.querySelector('source');
+
+  if (windowWidth > desktopBreakpoint) {
+
+    videoSource.setAttribute('src', desktopVideoURL);
+    video.load();
+
+  } else if (windowWidth > tabletBreakpoint) {
+
+    videoSource.setAttribute('src', tabletVideoURL);
+    video.load();
+
+  }
+
+});
+
+  /* autoplay on scroll */
+
+const autoplayVideo = document.querySelector('.capturing');
+
+const windowHeight = window.innerHeight;
+
+window.onscroll = function() {
+
+  const videoOffsetTop = autoplayVideo.getBoundingClientRect().top;
+  const videoOffsetBottom = autoplayVideo.getBoundingClientRect().bottom;
+
+  if (videoOffsetTop < windowHeight) autoplayVideo.play();
+  if (videoOffsetBottom < 0 || videoOffsetTop > windowHeight) autoplayVideo.pause();
+
+}
+
+/* smooth scroll */
+
+// Select all links with hashes
+$('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+      &&
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+    }
+  });
+
+/* mute video button */
+var vid=document.getElementById("introVideo");
+
+function Pause()
+{
+  vid.muted = false;
+
+}
+function Play()
+{
+if ( vid.muted == false){
+  vid.muted = true;
+}}
+
+function togglePausePlay()
+{
+  if ( vid.muted == false){
+    vid.muted = true;}
+    else{
+      vid.muted = false;
+    }
+
+}
+
+/* picture with sounds */
+
+$(document).ready(function() {
+
+  var byeBboys = document.getElementById("byeBoys");
+  var peeingBboys = document.getElementById("peeingBoys");
+
+       $('.bye-boys').click(function() {
+         if (peeingBboys.duration > 0 && !peeingBboys.paused) {
+           peeingBoys.pause();
+           $( ".peeing-boys" ).toggleClass( "soundPicSize", 1000 );
+           $( ".bye-boys" ).toggleClass( "soundPicSize", 1000 );
+           return byeBboys.paused ? byeBboys.play() : byeBboys.pause();
+
+         } else {
+
+           $( ".bye-boys" ).toggleClass( "soundPicSize", 1000 );
+           return byeBboys.paused ? byeBboys.play() : byeBboys.pause();
+
+         }
+       });
+
+       byeBboys.onended = function(){
+         $( ".bye-boys" ).toggleClass( "soundPicSize", 1000 );
+
+       }
+
+       $('.peeing-boys').click(function() {
+         if (byeBboys.duration > 0 && !byeBboys.paused) {
+           byeBboys.pause();
+           $( ".bye-boys" ).toggleClass( "soundPicSize", 1000 );
+           $( ".peeing-boys" ).toggleClass( "soundPicSize", 1000 );
+           return peeingBboys.paused ? peeingBboys.play() : peeingBboys.pause();
+
+         } else {
+
+           $( ".peeing-boys" ).toggleClass( "soundPicSize", 1000 );
+           return peeingBboys.paused ? peeingBboys.play() : peeingBboys.pause();
+
+         }
+       });
+
+       peeingBboys.onended = function(){
+         $( ".peeing-boys" ).toggleClass( "soundPicSize", 1000 );
+
+       }
+      });
+
+
+    </script>
+
+</body>
+
+</html>
